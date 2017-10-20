@@ -43,25 +43,18 @@ public class AddActivity extends AppCompatActivity {
     }
 
     private void addTodo() {
-        // Tạo ra một Id random theo thoi gian
         long time = new Date().getTime();
 
-        // Su dung contentValues để lưu dữ liệu, sau đó truyền vào SQLiteHelper
         ContentValues contentValues = new ContentValues();
-        // Truyền vào contentValues dữ liệu có dạng [key, value]
-        // Key là tên cột ở trong bảng, Value là giá trị muốn thêm vào cột đó
 
         contentValues.put("Id", time);
         contentValues.put("Title", edtTitle.getText().toString());
         contentValues.put("Date", edtDate.getText().toString());
         contentValues.put("Content", edtContent.getText().toString());
 
-        // sử dụng phương thức addToDo với tham số là contentValues
         long n = sqLiteHelper.addToDo(contentValues);
-        // n > 0 là thêm được dữ liệu vào trong bảng
         if(n > 0) {
             Toast.makeText(this, "Add complete", Toast.LENGTH_SHORT).show();
-            // Destroy activity add
             finish();
         }
     }

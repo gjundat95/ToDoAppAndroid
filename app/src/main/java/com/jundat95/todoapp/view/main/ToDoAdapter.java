@@ -32,7 +32,6 @@ public class ToDoAdapter extends ArrayAdapter<ToDo> {
 
     }
 
-    // Hàm lấy ra số phần tử của danh sách
     @Override
     public int getCount() {
         return toDoList.size();
@@ -42,15 +41,12 @@ public class ToDoAdapter extends ArrayAdapter<ToDo> {
     @Override
     public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
 
-        // Ánh xạ đến layout item_to_do để xử dụng các component nằm trong đó
         View v =  LayoutInflater.from(context).inflate(R.layout.item_to_do_list_view,parent,false);
 
-        // ánh xạ các component
         TextView tvTitle = v.findViewById(R.id.tvTitle);
         TextView tvContent = v.findViewById(R.id.tvContent);
         TextView tvDate = v.findViewById(R.id.tvDate);
 
-        // Set dữ liệu cho các compoent
         tvDate.setText(toDoList.get(position).getDate());
         tvContent.setText(toDoList.get(position).getContent());
         tvTitle.setText(toDoList.get(position).getTitle());
